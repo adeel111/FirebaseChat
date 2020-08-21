@@ -4,7 +4,7 @@ import {createStackNavigator} from '@react-navigation/stack';
 import {IconButton} from 'react-native-paper';
 import HomeScreen from '../screens/HomeScreen';
 import AddRoomScreen from '../screens/AddRoomScreen';
-// import RoomScreen from '../screens/RoomScreen';
+import RoomScreen from '../screens/RoomScreen';
 import {AuthContext} from './AuthProvider';
 
 const ChatAppStack = createStackNavigator();
@@ -50,13 +50,13 @@ function ChatApp() {
           ),
         })}
       />
-      {/* <ChatAppStack.Screen
+      <ChatAppStack.Screen
         name="Room"
         component={RoomScreen}
         options={({route}) => ({
           title: route.params.thread.name,
         })}
-      /> */}
+      />
     </ChatAppStack.Navigator>
   );
 }
