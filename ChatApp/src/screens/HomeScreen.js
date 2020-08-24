@@ -3,8 +3,11 @@ import {View, StyleSheet, FlatList, TouchableOpacity} from 'react-native';
 import {List, Divider} from 'react-native-paper';
 import firestore from '@react-native-firebase/firestore';
 import Loading from '../components/Loading';
+import useStatsBar from '../utils/useStatusBar';
 
 export default function HomeScreen({navigation}) {
+  useStatsBar('light-content');
+
   const [threads, setThreads] = useState([]);
   const [loading, setLoading] = useState(true);
 
@@ -14,18 +17,15 @@ export default function HomeScreen({navigation}) {
   useEffect(() => {
     const unsubscribe = firestore()
       .collection('THREADS')
-      // add this
       .orderBy('latestMessage.createdAt', 'desc')
       .onSnapshot((querySnapshot) => {
         const threads = querySnapshot.docs.map((documentSnapshot) => {
           return {
             _id: documentSnapshot.id,
             name: '',
-            // add this
             latestMessage: {
               text: '',
             },
-            // ---
             ...documentSnapshot.data(),
           };
         });
@@ -55,7 +55,7 @@ export default function HomeScreen({navigation}) {
             onPress={() => navigation.navigate('Room', {thread: item})}>
             <List.Item
               title={item.name}
-              description="Item description"
+              description={item.latestMessage.text}
               titleNumberOfLines={1}
               titleStyle={styles.listTitle}
               descriptionStyle={styles.listDescription}

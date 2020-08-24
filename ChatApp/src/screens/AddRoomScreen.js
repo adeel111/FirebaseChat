@@ -3,10 +3,12 @@ import {View, StyleSheet} from 'react-native';
 import {IconButton, Title} from 'react-native-paper';
 import FormInput from '../components/FormInput';
 import FormButton from '../components/FormButton';
-
 import firestore from '@react-native-firebase/firestore';
+import useStatsBar from '../utils/useStatusBar';
 
 export default function AddRoomScreen({navigation}) {
+  useStatsBar('light-content');
+
   const [roomName, setRoomName] = useState('');
 
   /**
