@@ -1,14 +1,9 @@
+import 'react-native-gesture-handler';
 import React from 'react';
-import {SafeAreaView, Text, StatusBar} from 'react-native';
+import MainNavigation from './src/navigations';
 
 const App = () => {
-  return (
-    <>
-      <SafeAreaView>
-        <Text>Welcome to NavFive</Text>
-      </SafeAreaView>
-    </>
-  );
+  return <MainNavigation />;
 };
 
 export default App;

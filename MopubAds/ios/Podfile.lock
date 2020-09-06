@@ -1,4 +1,6 @@
 PODS:
+  - AdColony (3.3.7)
+  - AppLovinSDK (6.2.0)
   - boost-for-react-native (1.63.0)
   - CocoaAsyncSocket (7.6.4)
   - CocoaLibEvent (1.0.0)
@@ -67,6 +69,55 @@ PODS:
     - DoubleConversion
     - glog
   - glog (0.3.5)
+  - Google-Mobile-Ads-SDK (7.39.0)
+  - MoPub-AdColony-Adapters (3.3.7.1):
+    - MoPub-AdColony-Adapters/MoPub (= 3.3.7.1)
+    - MoPub-AdColony-Adapters/Network (= 3.3.7.1)
+  - MoPub-AdColony-Adapters/MoPub (3.3.7.1):
+    - mopub-ios-sdk/Core (~> 5.5)
+  - MoPub-AdColony-Adapters/Network (3.3.7.1):
+    - AdColony (= 3.3.7)
+    - mopub-ios-sdk/Core (~> 5.5)
+  - MoPub-AdMob-Adapters (7.39.0.0):
+    - MoPub-AdMob-Adapters/MoPub (= 7.39.0.0)
+    - MoPub-AdMob-Adapters/Network (= 7.39.0.0)
+  - MoPub-AdMob-Adapters/MoPub (7.39.0.0):
+    - mopub-ios-sdk/Core (~> 5.5)
+  - MoPub-AdMob-Adapters/Network (7.39.0.0):
+    - Google-Mobile-Ads-SDK (= 7.39.0)
+    - mopub-ios-sdk/Core (~> 5.5)
+  - MoPub-Applovin-Adapters (6.2.0.1):
+    - MoPub-Applovin-Adapters/MoPub (= 6.2.0.1)
+    - MoPub-Applovin-Adapters/Network (= 6.2.0.1)
+  - MoPub-Applovin-Adapters/MoPub (6.2.0.1):
+    - mopub-ios-sdk/Core (~> 5.5)
+  - MoPub-Applovin-Adapters/Network (6.2.0.1):
+    - AppLovinSDK (= 6.2.0)
+    - mopub-ios-sdk/Core (~> 5.5)
+  - mopub-ios-sdk (5.13.1):
+    - mopub-ios-sdk/MoPubSDK (= 5.13.1)
+  - mopub-ios-sdk/Core (5.13.1)
+  - mopub-ios-sdk/MoPubSDK (5.13.1):
+    - mopub-ios-sdk/Core
+    - mopub-ios-sdk/NativeAds
+  - mopub-ios-sdk/NativeAds (5.13.1):
+    - mopub-ios-sdk/Core
+  - MoPub-TapJoy-Adapters (12.2.0.4):
+    - MoPub-TapJoy-Adapters/MoPub (= 12.2.0.4)
+    - MoPub-TapJoy-Adapters/Network (= 12.2.0.4)
+  - MoPub-TapJoy-Adapters/MoPub (12.2.0.4):
+    - mopub-ios-sdk/Core (~> 5.5)
+  - MoPub-TapJoy-Adapters/Network (12.2.0.4):
+    - mopub-ios-sdk/Core (~> 5.5)
+    - TapjoySDK (= 12.2.0)
+  - MoPub-Vungle-Adapters (6.3.2.6):
+    - MoPub-Vungle-Adapters/MoPub (= 6.3.2.6)
+    - MoPub-Vungle-Adapters/Network (= 6.3.2.6)
+  - MoPub-Vungle-Adapters/MoPub (6.3.2.6):
+    - mopub-ios-sdk/Core (~> 5.5)
+  - MoPub-Vungle-Adapters/Network (6.3.2.6):
+    - mopub-ios-sdk/Core (~> 5.5)
+    - VungleSDK-iOS (= 6.3.2)
   - OpenSSL-Universal (1.0.2.19):
     - OpenSSL-Universal/Static (= 1.0.2.19)
   - OpenSSL-Universal/Static (1.0.2.19)
@@ -236,7 +287,31 @@ PODS:
     - React-cxxreact (= 0.63.2)
     - React-jsi (= 0.63.2)
   - React-jsinspector (0.63.2)
-  - react-native-safe-area-context (3.1.7):
+  - react-native-mopub-sdk (1.0.0):
+    - React
+    - react-native-mopub-sdk/AdColony (= 1.0.0)
+    - react-native-mopub-sdk/AdMob (= 1.0.0)
+    - react-native-mopub-sdk/AppLovin (= 1.0.0)
+    - react-native-mopub-sdk/MoPub (= 1.0.0)
+    - react-native-mopub-sdk/Tapjoy (= 1.0.0)
+    - react-native-mopub-sdk/Vungle (= 1.0.0)
+  - react-native-mopub-sdk/AdColony (1.0.0):
+    - MoPub-AdColony-Adapters (~> 3.3.7.0)
+    - React
+  - react-native-mopub-sdk/AdMob (1.0.0):
+    - MoPub-AdMob-Adapters (~> 7.39.0.0)
+    - React
+  - react-native-mopub-sdk/AppLovin (1.0.0):
+    - MoPub-Applovin-Adapters (~> 6.2.0.1)
+    - React
+  - react-native-mopub-sdk/MoPub (1.0.0):
+    - mopub-ios-sdk (~> 5.0)
+    - React
+  - react-native-mopub-sdk/Tapjoy (1.0.0):
+    - MoPub-TapJoy-Adapters (~> 12.2.0.4)
+    - React
+  - react-native-mopub-sdk/Vungle (1.0.0):
+    - MoPub-Vungle-Adapters (~> 6.3.2.5)
     - React
   - React-RCTActionSheet (0.63.2):
     - React-Core/RCTActionSheetHeaders (= 0.63.2)
@@ -298,14 +373,8 @@ PODS:
     - React-Core (= 0.63.2)
     - React-cxxreact (= 0.63.2)
     - React-jsi (= 0.63.2)
-  - RNCMaskedView (0.1.10):
-    - React
-  - RNGestureHandler (1.8.0):
-    - React
-  - RNReanimated (1.13.0):
-    - React
-  - RNScreens (2.10.1):
-    - React
+  - TapjoySDK (12.2.0)
+  - VungleSDK-iOS (6.3.2)
   - Yoga (1.14.0)
   - YogaKit (1.18.1):
     - Yoga (~> 1.14)
@@ -347,7 +416,7 @@ DEPENDENCIES:
   - React-jsi (from `../node_modules/react-native/ReactCommon/jsi`)
   - React-jsiexecutor (from `../node_modules/react-native/ReactCommon/jsiexecutor`)
   - React-jsinspector (from `../node_modules/react-native/ReactCommon/jsinspector`)
-  - react-native-safe-area-context (from `../node_modules/react-native-safe-area-context`)
+  - react-native-mopub-sdk (from `../node_modules/react-native-mopub-sdk`)
   - React-RCTActionSheet (from `../node_modules/react-native/Libraries/ActionSheetIOS`)
   - React-RCTAnimation (from `../node_modules/react-native/Libraries/NativeAnimation`)
   - React-RCTBlob (from `../node_modules/react-native/Libraries/Blob`)
@@ -358,14 +427,12 @@ DEPENDENCIES:
   - React-RCTText (from `../node_modules/react-native/Libraries/Text`)
   - React-RCTVibration (from `../node_modules/react-native/Libraries/Vibration`)
   - ReactCommon/turbomodule/core (from `../node_modules/react-native/ReactCommon`)
-  - "RNCMaskedView (from `../node_modules/@react-native-community/masked-view`)"
-  - RNGestureHandler (from `../node_modules/react-native-gesture-handler`)
-  - RNReanimated (from `../node_modules/react-native-reanimated`)
-  - RNScreens (from `../node_modules/react-native-screens`)
   - Yoga (from `../node_modules/react-native/ReactCommon/yoga`)
 
 SPEC REPOS:
   trunk:
+    - AdColony
+    - AppLovinSDK
     - boost-for-react-native
     - CocoaAsyncSocket
     - CocoaLibEvent
@@ -376,7 +443,16 @@ SPEC REPOS:
     - Flipper-PeerTalk
     - Flipper-RSocket
     - FlipperKit
+    - Google-Mobile-Ads-SDK
+    - MoPub-AdColony-Adapters
+    - MoPub-AdMob-Adapters
+    - MoPub-Applovin-Adapters
+    - mopub-ios-sdk
+    - MoPub-TapJoy-Adapters
+    - MoPub-Vungle-Adapters
     - OpenSSL-Universal
+    - TapjoySDK
+    - VungleSDK-iOS
     - YogaKit
 
 EXTERNAL SOURCES:
@@ -410,8 +486,8 @@ EXTERNAL SOURCES:
     :path: "../node_modules/react-native/ReactCommon/jsiexecutor"
   React-jsinspector:
     :path: "../node_modules/react-native/ReactCommon/jsinspector"
-  react-native-safe-area-context:
-    :path: "../node_modules/react-native-safe-area-context"
+  react-native-mopub-sdk:
+    :path: "../node_modules/react-native-mopub-sdk"
   React-RCTActionSheet:
     :path: "../node_modules/react-native/Libraries/ActionSheetIOS"
   React-RCTAnimation:
@@ -432,18 +508,12 @@ EXTERNAL SOURCES:
     :path: "../node_modules/react-native/Libraries/Vibration"
   ReactCommon:
     :path: "../node_modules/react-native/ReactCommon"
-  RNCMaskedView:
-    :path: "../node_modules/@react-native-community/masked-view"
-  RNGestureHandler:
-    :path: "../node_modules/react-native-gesture-handler"
-  RNReanimated:
-    :path: "../node_modules/react-native-reanimated"
-  RNScreens:
-    :path: "../node_modules/react-native-screens"
   Yoga:
     :path: "../node_modules/react-native/ReactCommon/yoga"
 
 SPEC CHECKSUMS:
+  AdColony: 86db79092f2cb0ff22b676ff13b3096b696306c7
+  AppLovinSDK: b960ee5305e0cd8437bb0e97c9fe0be7d5cca57c
   boost-for-react-native: 39c7adb57c4e60d6c5479dd8623128eb5b3f0f2c
   CocoaAsyncSocket: 694058e7c0ed05a9e217d1b3c7ded962f4180845
   CocoaLibEvent: 2fab71b8bd46dd33ddb959f7928ec5909f838e3f
@@ -459,6 +529,13 @@ SPEC CHECKSUMS:
   FlipperKit: bc68102cd4952a258a23c9c1b316c7bec1fecf83
   Folly: b73c3869541e86821df3c387eb0af5f65addfab4
   glog: 40a13f7840415b9a77023fbcae0f1e6f43192af3
+  Google-Mobile-Ads-SDK: d0f10a7c4d7015db23075ff316602350d12049db
+  MoPub-AdColony-Adapters: b932592758259c222819cede8e23fc3d79948b7b
+  MoPub-AdMob-Adapters: b3fc87f014bd331f0030acee942b8d781f28e3dd
+  MoPub-Applovin-Adapters: 41bdb1609c9c07b0e3abd682286a332250946291
+  mopub-ios-sdk: 18af57aaf79d0ea3d0232b43b2d603ae8ea8e826
+  MoPub-TapJoy-Adapters: 8c9ecfb55495bb75573e692f962f73ef7081d4f7
+  MoPub-Vungle-Adapters: 5e8b836691b85de3c30238b7dbc5ce29986396ca
   OpenSSL-Universal: 8b48cc0d10c1b2923617dfe5c178aa9ed2689355
   RCTRequired: f13f25e7b12f925f1f6a6a8c69d929a03c0129fe
   RCTTypeSafety: 44982c5c8e43ff4141eb519a8ddc88059acd1f3a
@@ -470,7 +547,7 @@ SPEC CHECKSUMS:
   React-jsi: 54245e1d5f4b690dec614a73a3795964eeef13a8
   React-jsiexecutor: 8ca588cc921e70590820ce72b8789b02c67cce38
   React-jsinspector: b14e62ebe7a66e9231e9581279909f2fc3db6606
-  react-native-safe-area-context: 955ecfce672683b495d9294d2f154a9ad1d9796b
+  react-native-mopub-sdk: 17da2071197b0d31fdce9c4a2ad1a2fa6f3391e4
   React-RCTActionSheet: 910163b6b09685a35c4ebbc52b66d1bfbbe39fc5
   React-RCTAnimation: 9a883bbe1e9d2e158d4fb53765ed64c8dc2200c6
   React-RCTBlob: 39cf0ece1927996c4466510e25d2105f67010e13
@@ -481,13 +558,11 @@ SPEC CHECKSUMS:
   React-RCTText: 1b6773e776e4b33f90468c20fe3b16ca3e224bb8
   React-RCTVibration: 4d2e726957f4087449739b595f107c0d4b6c2d2d
   ReactCommon: a0a1edbebcac5e91338371b72ffc66aa822792ce
-  RNCMaskedView: 5a8ec07677aa885546a0d98da336457e2bea557f
-  RNGestureHandler: 7a5833d0f788dbd107fbb913e09aa0c1ff333c39
-  RNReanimated: 89f5e0a04d1dd52fbf27e7e7030d8f80a646a3fc
-  RNScreens: b748efec66e095134c7166ca333b628cd7e6f3e2
+  TapjoySDK: f5b3711c12205bbfbda3b95179072c8a9b5fcf09
+  VungleSDK-iOS: 69a7f407b60281d2954ffc5eeeac349fbfed51d6
   Yoga: 7740b94929bbacbddda59bf115b5317e9a161598
   YogaKit: f782866e155069a2cca2517aafea43200b01fd5a
 
-PODFILE CHECKSUM: 179857b4b8211d89ff2f5e080f63696a78f15a9e
+PODFILE CHECKSUM: 361ff90375feef567adec5a07e10299ab8195cb8
 
 COCOAPODS: 1.9.3
