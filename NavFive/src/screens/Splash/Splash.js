@@ -1,15 +1,26 @@
 import React, {useEffect} from 'react';
 import {SafeAreaView, Text} from 'react-native';
 
-const Splash = () => {
+const Splash = (props) => {
   useEffect(() => {
-    alert('clicked');
+    setTimeout(() => {
+      props.navigation.navigate('Login');
+    }, 2000);
   }, []);
 
   return (
     <>
-      <SafeAreaView>
-        <Text>Welcome to Splash</Text>
+      <SafeAreaView
+        style={{flex: 1, justifyContent: 'center', alignItems: 'center'}}>
+        <Text
+          style={{
+            fontSize: 26,
+            fontWeight: '500',
+            fontStyle: 'italic',
+            alignSelf: 'center',
+          }}>
+          Welcome to Splash
+        </Text>
       </SafeAreaView>
     </>
   );
