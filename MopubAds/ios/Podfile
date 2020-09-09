@@ -7,7 +7,7 @@ target 'MopubAds' do
   
   pod 'React', :path => '../node_modules/react-native/'
   pod 'React-Core', :path => '../node_modules/react-native/'
-#  pod 'CxxBridge'
+  pod 'CxxBridge'
   pod 'React-Core/DevSupport', :path => '../node_modules/react-native/'
   pod 'React-RCTText', :path => '../node_modules/react-native/Libraries/Text'
   pod 'React-RCTNetwork', :path => '../node_modules/react-native/Libraries/Network'
