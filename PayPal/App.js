@@ -4,7 +4,7 @@ import ByLib from './screens/ByLib';
 
 class App extends Component {
   render() {
-    return <ByLib />;
+    return <ByWeb />;
   }
 }
 

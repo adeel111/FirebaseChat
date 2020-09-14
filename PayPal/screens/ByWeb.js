@@ -3,11 +3,12 @@ import {
   StyleSheet,
   SafeAreaView,
   Text,
-  WebView,
   ActivityIndicator,
   TouchableOpacity,
 } from 'react-native';
 import axios from 'axios';
+import qs from 'qs';
+import {WebView} from 'react-native-webview';
 
 class App extends Component {
   state = {
@@ -16,13 +17,47 @@ class App extends Component {
     paymentId: null,
   };
 
+  // rest api call to get access token
+  getAccessToken = () => {
+    var data = qs.stringify({
+      grant_type: 'client_credentials',
+    });
+    var config = {
+      method: 'post',
+      url: 'https://api.sandbox.paypal.com/v1/oauth2/token',
+      headers: {
+        'Content-Type': 'application/x-www-form-urlencoded',
+        Authorization:
+          'Basic QVZqMWN1eHZvRE10Z25zNDI4dklLTUkxNVEyM29LYWpFV1ZUUm9FOXFPbnZrcEVhWXBHZW1IS0lYd1lyTzVsS3VYdUo3UHJnQXZieXozbnk6RUtyVjdSXzVaMFlNUE9LN0hRUXZFSVVzMnF4YkJ4dzJFcmtJQmRjWVRFbVlSVUl3OERWTjJLTlRPYXo5NGxQbVA4b3lFcGszNm9jRXZOTUg=',
+      },
+      data: data,
+    };
+
+    axios(config)
+      .then((response) => {
+        const token = response.data.access_token;
+        // console.log(JSON.stringify(token));
+        this.setState(
+          {
+            accessToken: token,
+          },
+          () => {
+            console.log('access token success');
+            this.handleTransaction();
+          },
+        );
+      })
+      .catch((error) => {
+        console.log('access token error');
+        console.log(error);
+      });
+  };
+
   handleTransaction = () => {
-    alert('clicked');
-    let currency = '1 USD';
-    currency.replace(' USD', '');
+    let currency = '1.0'; // dollar
 
     // Data which will go in WebView for Transaction
-    const dataDetail = {
+    const params = {
       intent: 'sale',
       payer: {
         payment_method: 'paypal',
@@ -31,7 +66,7 @@ class App extends Component {
         {
           amount: {
             total: currency,
-            currency: 'THB',
+            currency: 'USD',
             details: {
               subtotal: currency,
               tax: '0',
@@ -48,62 +83,65 @@ class App extends Component {
         cancel_url: 'https://example.com',
       },
     };
-    // rest api call to get access token
 
-    const postmanToken =
-      'A21AALRx7UaqPqeboFwQZ8bWyeg5Hq1ktyUq3mHPCCFVRKVwsn1dgzuaI0jK1u33-MLOAlzl4ZMkbDazz8p_BN880dHuQqZqA';
+    // rest api call to get payment id & approval url
     axios
-      .post(
-        'https://api.sandbox.paypal.com/v1/oauth2/token',
-        JSON.stringify({grant_type: 'client_credentials'}),
-        {
-          headers: {
-            Accept: 'application/json',
-            // 'Content-Type': 'application/x-www-form-urlencoded',
-            'Content-Type': 'application/json',
-            Authorization: `Bearer ${postmanToken}`,
-          },
+      .post('https://api.sandbox.paypal.com/v1/payments/payment', params, {
+        headers: {
+          'Content-Type': 'application/json',
+          Authorization: `Bearer ${this.state.accessToken}`,
         },
-      )
-      .then((response) => {
-        alert(response.data.access_token);
-        this.setState({
-          accessToken: response.data.access_token,
-        });
-
-        return;
-
-        // rest api call to get access token payment id & approval url
-        axios
-          .post(
-            'https://api.sandbox.paypal.com/v1/payments/payment',
-            dataDetail,
-            {
-              headers: {
-                'Content-Type': 'application/json',
-                Authorization: `Bearer ${this.state.accessToken}`,
-              },
-            },
-          )
-          .then((response) => {
-            const {id, links} = response.data;
-            const approvalUrl = links.find(
-              (data) => data.rel == 'approval_url',
-            );
-
-            this.setState({
-              paymentId: id,
-              approvalUrl: approvalUrl.href,
-            });
-          })
-          .catch((err) => {
-            console.log({...err});
-          });
       })
-      .catch((error) => {
-        alert('error for you, headache');
-        console.log(error.response.request._response);
+      .then((response) => {
+        const {id, links} = response.data;
+
+        const approvalUrl = links.find((data) => data.rel == 'approval_url');
+        console.log('id, links Success');
+        this.setState({
+          paymentId: id,
+          approvalUrl: approvalUrl.href,
+        });
+      })
+      .catch((err) => {
+        console.log('id, links error');
+        console.log({...err});
       });
+  };
+
+  _onNavigationStateChange = (webViewState) => {
+    if (webViewState.url.includes('https://example.com/')) {
+      this.setState({
+        approvalUrl: null,
+      });
+
+      // const {PayerID, paymentId} = webViewState.url;
+      const extractURL = webViewState.url;
+
+      // getting paymentId & PayerID from string (form of link)
+      const res = extractURL.split('=');
+      const paymentId = res[1].slice(0, -6);
+      const PayerID = res[3];
+
+      axios
+        .post(
+          `https://api.sandbox.paypal.com/v1/payments/payment/${paymentId}/execute`,
+          {payer_id: PayerID},
+          {
+            headers: {
+              'Content-Type': 'application/json',
+              Authorization: `Bearer ${this.state.accessToken}`,
+            },
+          },
+        )
+        .then((response) => {
+          console.log('done payment success');
+          console.log(response);
+        })
+        .catch((err) => {
+          console.log('done payment error');
+          console.log({...err});
+        });
+    }
   };
 
   render() {
@@ -114,17 +152,24 @@ class App extends Component {
           <WebView
             style={{height: 400, width: 300}}
             source={{uri: approvalUrl}}
-            onNavigationStateChange={this._onNavigationStateChange}
+            onNavigationStateChange={(webViewState) =>
+              this._onNavigationStateChange(webViewState)
+            }
             javaScriptEnabled={true}
             domStorageEnabled={true}
-            startInLoadingState={false}
-            style={{marginTop: 20}}
+            startInLoadingState={true}
+            renderLoading={() => (
+              <ActivityIndicator
+                size="large"
+                color={'Blue'}
+                style={{marginTop: 10}}
+              />
+            )}
           />
         ) : (
-          // <ActivityIndicator />
           <TouchableOpacity
             activeOpacity={0.9}
-            onPress={() => this.handleTransaction()}
+            onPress={() => this.getAccessToken()}
             style={styles.buttonStyles}>
             <Text style={styles.buttonTextStyles}>Pay with PayPal</Text>
           </TouchableOpacity>
