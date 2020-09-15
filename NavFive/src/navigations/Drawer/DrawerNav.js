@@ -9,6 +9,9 @@ import RequestsStack from '../../navigations/Stacks/RequestsStack';
 
 import DrawerHeader from './DrawerHeader';
 
+import Entypo from 'react-native-vector-icons/Entypo';
+import Ionicons from 'react-native-vector-icons/Ionicons';
+
 const Drawer = createDrawerNavigator();
 
 function DrawerNav() {
@@ -16,13 +19,63 @@ function DrawerNav() {
     <Drawer.Navigator
       drawerContentOptions={{
         activeTintColor: 'green',
-        itemStyle: {marginVertical: 0},
+        inactiveTintColor: 'grey',
+        activeBackgroundColor: 'white',
+        inactiveBackgroundColor: 'white',
+        itemStyle: {marginTop: 0},
+        labelStyle: {fontSize: 16},
       }}
+      drawerType="front"
+      hideStatusBar={true}
       drawerContent={(props) => <DrawerHeader {...props} />}>
-      <Drawer.Screen name="Home" component={HomeStack} />
-      <Drawer.Screen name="Notifications" component={NotificationsStack} />
-      <Drawer.Screen name="Friends" component={FriendsStack} />
-      <Drawer.Screen name="Requests" component={RequestsStack} />
+      <Drawer.Screen
+        name="Home"
+        component={HomeStack}
+        options={{
+          drawerIcon: ({focused}) => (
+            <Entypo name="home" color={focused ? 'green' : 'grey'} size={20} />
+          ),
+        }}
+      />
+      <Drawer.Screen
+        name="Notifications"
+        component={NotificationsStack}
+        options={{
+          drawerIcon: ({focused}) => (
+            <Ionicons
+              name="notifications"
+              color={focused ? 'green' : 'grey'}
+              size={20}
+            />
+          ),
+        }}
+      />
+      <Drawer.Screen
+        name="Friends"
+        component={FriendsStack}
+        options={{
+          drawerIcon: ({focused}) => (
+            <Ionicons
+              name="people"
+              color={focused ? 'green' : 'grey'}
+              size={20}
+            />
+          ),
+        }}
+      />
+      <Drawer.Screen
+        name="Requests"
+        component={RequestsStack}
+        options={{
+          drawerIcon: ({focused}) => (
+            <Ionicons
+              name="ios-person-add"
+              color={focused ? 'green' : 'grey'}
+              size={20}
+            />
+          ),
+        }}
+      />
     </Drawer.Navigator>
   );
 }

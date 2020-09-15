@@ -7,17 +7,12 @@ import {
   SafeAreaView,
   Image,
   Dimensions,
-  Platform,
-  StatusBar,
 } from 'react-native';
 import {
   DrawerContentScrollView,
   DrawerItemList,
-  DrawerItem,
 } from '@react-navigation/drawer';
 import {nature, home} from '../../assets';
-import Entypo from 'react-native-vector-icons/Entypo';
-import Ionicons from 'react-native-vector-icons/Ionicons';
 import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
 
 function DrawerHeader(props) {
@@ -39,36 +34,9 @@ function DrawerHeader(props) {
       </ImageBackground>
 
       <DrawerContentScrollView {...props}>
-        {/* <DrawerItemList {...props} /> */}
-        <View style={styles.drawerSection}>
-          <DrawerItem
-            icon={({color}) => <Entypo name="home" color={color} size={20} />}
-            label="Home"
-            onPress={() => props.navigation.navigate('Home')}
-          />
-          <DrawerItem
-            icon={({color}) => (
-              <Ionicons name="notifications" color={color} size={20} />
-            )}
-            label="Notifications"
-            onPress={() => props.navigation.navigate('Notifications')}
-          />
-          <DrawerItem
-            icon={({color}) => (
-              <Ionicons name="people" color={color} size={20} />
-            )}
-            label="Friends"
-            onPress={() => props.navigation.navigate('Friends')}
-          />
-          <DrawerItem
-            icon={({color}) => (
-              <Ionicons name="ios-person-add" color={color} size={20} />
-            )}
-            label="Requests"
-            onPress={() => props.navigation.navigate('Requests')}
-          />
-        </View>
+        <DrawerItemList {...props} />
       </DrawerContentScrollView>
+
       <View style={styles.bottomDrawerSection}>
         <MaterialIcons
           name="logout"
@@ -88,7 +56,6 @@ const styles = StyleSheet.create({
     flex: 1,
     display: 'flex',
     justifyContent: 'center',
-    // marginTop: Platform.OS === 'ios' ? StatusBar.height : 0,
   },
   imageContainer: {
     height: Dimensions.get('window').height / 4,
