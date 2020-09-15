@@ -7,12 +7,18 @@ import {
   SafeAreaView,
   Image,
   Dimensions,
+  Platform,
+  StatusBar,
 } from 'react-native';
 import {
   DrawerContentScrollView,
   DrawerItemList,
+  DrawerItem,
 } from '@react-navigation/drawer';
 import {nature, home} from '../../assets';
+import Entypo from 'react-native-vector-icons/Entypo';
+import Ionicons from 'react-native-vector-icons/Ionicons';
+import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
 
 function DrawerHeader(props) {
   return (
@@ -20,7 +26,7 @@ function DrawerHeader(props) {
       style={styles.mainContainer}
       forceInset={{top: 'always', horizontal: 'never'}}>
       <ImageBackground
-        style={styles.drawerHeaderContainer}
+        style={styles.imageContainer}
         resizeMode={'cover'}
         source={nature}>
         <View style={styles.blurView}>
@@ -31,9 +37,46 @@ function DrawerHeader(props) {
           </Text>
         </View>
       </ImageBackground>
+
       <DrawerContentScrollView {...props}>
-        <DrawerItemList {...props} />
+        {/* <DrawerItemList {...props} /> */}
+        <View style={styles.drawerSection}>
+          <DrawerItem
+            icon={({color}) => <Entypo name="home" color={color} size={20} />}
+            label="Home"
+            onPress={() => props.navigation.navigate('Home')}
+          />
+          <DrawerItem
+            icon={({color}) => (
+              <Ionicons name="notifications" color={color} size={20} />
+            )}
+            label="Notifications"
+            onPress={() => props.navigation.navigate('Notifications')}
+          />
+          <DrawerItem
+            icon={({color}) => (
+              <Ionicons name="people" color={color} size={20} />
+            )}
+            label="Friends"
+            onPress={() => props.navigation.navigate('Friends')}
+          />
+          <DrawerItem
+            icon={({color}) => (
+              <Ionicons name="ios-person-add" color={color} size={20} />
+            )}
+            label="Requests"
+            onPress={() => props.navigation.navigate('Requests')}
+          />
+        </View>
       </DrawerContentScrollView>
+      <View style={styles.bottomDrawerSection}>
+        <MaterialIcons
+          name="logout"
+          color={'green'}
+          size={24}
+          onPress={() => alert('todo!')}
+        />
+      </View>
     </SafeAreaView>
   );
 }
@@ -45,8 +88,9 @@ const styles = StyleSheet.create({
     flex: 1,
     display: 'flex',
     justifyContent: 'center',
+    // marginTop: Platform.OS === 'ios' ? StatusBar.height : 0,
   },
-  drawerHeaderContainer: {
+  imageContainer: {
     height: Dimensions.get('window').height / 4,
     width: '100%',
   },
@@ -86,5 +130,16 @@ const styles = StyleSheet.create({
     height: '100%',
     justifyContent: 'center',
     alignItems: 'center',
+  },
+  drawerSection: {
+    marginTop: 15,
+  },
+  bottomDrawerSection: {
+    margin: 10,
+    paddingTop: 10,
+    borderTopColor: '#f4f4f4',
+    borderTopWidth: 1,
+    justifyContent: 'center',
+    alignItems: 'flex-end',
   },
 });
