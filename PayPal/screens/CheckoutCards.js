@@ -84,8 +84,8 @@ const CheckoutCards = () => {
 
     axios(config)
       .then(function (response) {
-        const res = response.data.response_summary;
-        if (res === 'captured' || res === 'approved') {
+        const res = response.data.approved;
+        if (res) {
           alert('success');
           console.log('success response => ' + res);
         } else {
@@ -134,7 +134,6 @@ const styles = StyleSheet.create({
   mainContainer: {
     flex: 1,
     justifyContent: 'center',
-    // alignItems: 'center',
   },
   label: {
     color: 'blue',
