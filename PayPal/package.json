@@ -10,10 +10,12 @@
     "lint": "eslint ."
   },
   "dependencies": {
+    "@wedoogift/react-native-checkout-payment": "^0.9.13",
     "axios": "^0.20.0",
     "qs": "^6.9.4",
     "react": "16.13.1",
     "react-native": "0.63.2",
+    "react-native-credit-card-input": "^0.4.1",
     "react-native-paypal": "^2.2.0",
     "react-native-webview": "^10.8.3"
   },
