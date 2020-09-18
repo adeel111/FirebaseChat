@@ -14,6 +14,9 @@ function NotificationsStack(props) {
         component={Notifications}
         options={{
           title: 'Notifications',
+          headerStyle: {
+            elevation: 0,
+          },
           headerLeft: () => (
             <TouchableOpacity onPress={() => props.navigation.toggleDrawer()}>
               {/*Donute Button Image */}

@@ -3,17 +3,24 @@ import {TouchableOpacity, Image} from 'react-native';
 import {createStackNavigator} from '@react-navigation/stack';
 
 import Home from '../../screens/Home';
+import Details from '../../screens/Home/Details';
+import TopTabs from '../../navigations/Tabs/TopTabs';
+
+import Ionicons from 'react-native-vector-icons/Ionicons';
 
 const Stack = createStackNavigator();
 
 function HomeStack(props) {
   return (
-    <Stack.Navigator initialRouteName="Splash">
+    <Stack.Navigator initialRouteName="Home">
       <Stack.Screen
         name="Home"
         component={Home}
         options={{
           title: 'Home',
+          headerStyle: {
+            elevation: 0,
+          },
           headerLeft: () => (
             <TouchableOpacity onPress={() => props.navigation.toggleDrawer()}>
               {/*Donute Button Image */}
@@ -30,6 +37,24 @@ function HomeStack(props) {
                 }}
               />
             </TouchableOpacity>
+          ),
+        }}
+      />
+      <Stack.Screen
+        name="Details"
+        component={TopTabs}
+        options={{
+          title: 'Details',
+          headerStyle: {
+            elevation: 0,
+          },
+          headerRight: () => (
+            <Ionicons
+              name="settings"
+              color={'green'}
+              size={22}
+              style={{marginRight: 10}}
+            />
           ),
         }}
       />

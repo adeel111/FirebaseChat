@@ -14,6 +14,9 @@ function RequestsStack(props) {
         component={Requests}
         options={{
           title: 'Requests',
+          headerStyle: {
+            elevation: 0,
+          },
           headerLeft: () => (
             <TouchableOpacity onPress={() => props.navigation.toggleDrawer()}>
               {/*Donute Button Image */}

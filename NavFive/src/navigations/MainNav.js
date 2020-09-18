@@ -3,13 +3,12 @@ import {NavigationContainer} from '@react-navigation/native';
 import {createStackNavigator} from '@react-navigation/stack';
 
 import Splash from '../screens/Splash';
-import Login from '../screens/Login';
-import Signup from '../screens/Signup';
+import AuthStack from '../navigations/Stacks/AuthStack';
 import DrawerNav from '../navigations/Drawer';
 
 const Stack = createStackNavigator();
 
-function MainNav() {
+function MainNavigation() {
   return (
     <NavigationContainer>
       <Stack.Navigator
@@ -19,14 +18,13 @@ function MainNav() {
         <Stack.Screen
           name="Splash"
           component={Splash}
-          options={{title: 'Splash Screen', headerShown: false}}
+          options={{title: 'Splash Screen', headerShown: false}} // from single screen
         />
-        <Stack.Screen name="Login" component={Login} />
-        <Stack.Screen name="Signup" component={Signup} />
+        <Stack.Screen name="Auth" component={AuthStack} />
         <Stack.Screen name="Home" component={DrawerNav} />
       </Stack.Navigator>
     </NavigationContainer>
   );
 }
 
-export default MainNav;
+export default MainNavigation;

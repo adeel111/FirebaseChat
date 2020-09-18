@@ -3,7 +3,7 @@ import {StyleSheet, SafeAreaView, TouchableOpacity, Text} from 'react-native';
 
 const Login = (props) => {
   const replaceScreen = (screen) => {
-    props.navigation.navigate(screen);
+    props.navigation.replace(screen);
   };
 
   return (

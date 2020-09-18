@@ -2,24 +2,23 @@ import * as React from 'react';
 import {TouchableOpacity, Image} from 'react-native';
 import {createStackNavigator} from '@react-navigation/stack';
 
-import Friends from '../../screens/Friends';
+import Settings from '../../screens/Settings';
 
 const Stack = createStackNavigator();
 
-function FriendsStack(props) {
+function SettingsStack(props) {
   return (
     <Stack.Navigator initialRouteName="Splash">
       <Stack.Screen
-        name="Friends"
-        component={Friends}
+        name="Settings"
+        component={Settings}
         options={{
-          title: 'Friends',
+          title: 'Settings',
           headerStyle: {
             elevation: 0,
           },
           headerLeft: () => (
             <TouchableOpacity onPress={() => props.navigation.toggleDrawer()}>
-              {/*Donute Button Image */}
               <Image
                 source={{
                   uri:
@@ -40,4 +39,4 @@ function FriendsStack(props) {
   );
 }
 
-export default FriendsStack;
+export default SettingsStack;

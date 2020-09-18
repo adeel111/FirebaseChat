@@ -2,7 +2,7 @@ import * as React from 'react';
 import {createDrawerNavigator} from '@react-navigation/drawer';
 
 // imports screens
-import HomeStack from '../../navigations/Stacks/HomeStack';
+import BottomTabs from '../../navigations/Tabs/BottomTabs';
 import NotificationsStack from '../../navigations/Stacks/NotificationsStack';
 import FriendsStack from '../../navigations/Stacks/FriendsStack';
 import RequestsStack from '../../navigations/Stacks/RequestsStack';
@@ -26,11 +26,11 @@ function DrawerNav() {
         labelStyle: {fontSize: 16},
       }}
       drawerType="front"
-      hideStatusBar={true}
+      // hideStatusBar={true}
       drawerContent={(props) => <DrawerHeader {...props} />}>
       <Drawer.Screen
         name="Home"
-        component={HomeStack}
+        component={BottomTabs}
         options={{
           drawerIcon: ({focused}) => (
             <Entypo name="home" color={focused ? 'green' : 'grey'} size={20} />
