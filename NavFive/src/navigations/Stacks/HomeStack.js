@@ -1,12 +1,11 @@
 import * as React from 'react';
-import {TouchableOpacity, Image} from 'react-native';
 import {createStackNavigator} from '@react-navigation/stack';
 
 import Home from '../../screens/Home';
-import Details from '../../screens/Home/Details';
 import TopTabs from '../../navigations/Tabs/TopTabs';
 
 import Ionicons from 'react-native-vector-icons/Ionicons';
+import FontAwesome from 'react-native-vector-icons/FontAwesome';
 
 const Stack = createStackNavigator();
 
@@ -22,21 +21,13 @@ function HomeStack(props) {
             elevation: 0,
           },
           headerLeft: () => (
-            <TouchableOpacity onPress={() => props.navigation.toggleDrawer()}>
-              {/*Donute Button Image */}
-              <Image
-                source={{
-                  uri:
-                    'https://raw.githubusercontent.com/AboutReact/sampleresource/master/drawerWhite.png',
-                }}
-                style={{
-                  width: 25,
-                  height: 25,
-                  marginLeft: 10,
-                  tintColor: 'green',
-                }}
-              />
-            </TouchableOpacity>
+            <FontAwesome
+              name="bars"
+              color={'green'}
+              size={22}
+              style={{marginLeft: 15}}
+              onPress={() => props.navigation.toggleDrawer()}
+            />
           ),
         }}
       />

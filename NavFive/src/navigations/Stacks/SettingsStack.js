@@ -1,8 +1,8 @@
 import * as React from 'react';
-import {TouchableOpacity, Image} from 'react-native';
 import {createStackNavigator} from '@react-navigation/stack';
 
 import Settings from '../../screens/Settings';
+import FontAwesome from 'react-native-vector-icons/FontAwesome';
 
 const Stack = createStackNavigator();
 
@@ -18,20 +18,13 @@ function SettingsStack(props) {
             elevation: 0,
           },
           headerLeft: () => (
-            <TouchableOpacity onPress={() => props.navigation.toggleDrawer()}>
-              <Image
-                source={{
-                  uri:
-                    'https://raw.githubusercontent.com/AboutReact/sampleresource/master/drawerWhite.png',
-                }}
-                style={{
-                  width: 25,
-                  height: 25,
-                  marginLeft: 10,
-                  tintColor: 'green',
-                }}
-              />
-            </TouchableOpacity>
+            <FontAwesome
+              name="bars"
+              color={'green'}
+              size={22}
+              style={{marginLeft: 15}}
+              onPress={() => props.navigation.toggleDrawer()}
+            />
           ),
         }}
       />
