@@ -10,7 +10,7 @@ const Stack = createStackNavigator();
 
 function MainNavigation() {
   return (
-    <NavigationContainer>
+    <NavigationContainer >
       <Stack.Navigator
         initialRouteName="Splash"
         screenOptions={{headerShown: false}} // to hide header from all screens
