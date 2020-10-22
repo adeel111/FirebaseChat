@@ -14,7 +14,7 @@ import {GiftedChat, Bubble} from 'react-native-gifted-chat';
 import {Icon, Avatar, Header} from 'react-native-elements';
 
 const Chat = () => {
-  const [message, setMessage] = useState('');
+  const [message, setMessage] = useState([]);
   const [allMessages, setAllMessages] = useState('');
   const [height, setHeight] = useState(20);
   const [msg, setMsg] = useState('Coming Message');
@@ -76,8 +76,10 @@ const Chat = () => {
     axios(config)
       .then(function (response) {
         const data = JSON.stringify(response.data);
-        console.log(JSON.stringify(data));
-        // setAllMessages(data);
+        console.log('response.data.messages');
+        console.log(response.data.messages);
+        console.log(response.data.messages[index].id);
+        setAllMessages(response.data.messages);
       })
       .catch(function (error) {
         console.log(error);
@@ -184,15 +186,15 @@ const Chat = () => {
           containerStyle={styles.headerContainer}
           rightContainerStyle={styles.headerRightContainer}
         />
-        <GiftedChat
+        {/* <GiftedChat
           messages={allMessages && allMessages}
           onSend={(messages) => onSend(messages)}
           user={{
-            _id: 3,
+            _id: allMessages[0].id,
           }}
           renderComposer={() => renderComposer()}
           // renderUsernameOnMessage
-        />
+        /> */}
       </SafeAreaView>
     </>
   );
