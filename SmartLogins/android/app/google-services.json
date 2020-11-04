@@ -1,0 +1,55 @@
+{
+  "project_info": {
+    "project_number": "964693322223",
+    "firebase_url": "https://smart-logins.firebaseio.com",
+    "project_id": "smart-logins",
+    "storage_bucket": "smart-logins.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:964693322223:android:8b0d9115b20e93589bee1a",
+        "android_client_info": {
+          "package_name": "com.smartlogins"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "964693322223-l3latgbf9oej00lbkbojk77rp8s9a4gp.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.smartlogins",
+            "certificate_hash": "5e8f16062ea3cd2c4a0d547876baa6f38cabf625"
+          }
+        },
+        {
+          "client_id": "964693322223-3agd4u4lrso3b1lqv97ac5a132gvi1gs.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyA4kL0DnEciGY-94FuXhftY0rmnok3yg-g"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "964693322223-3agd4u4lrso3b1lqv97ac5a132gvi1gs.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "964693322223-4k47rbghlrqkri985pofp0flre9qolnl.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.techndevs.SmartLogins"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
