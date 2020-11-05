@@ -2,27 +2,24 @@ import React, {useState} from 'react';
 import {
   Text,
   View,
-  StatusBar,
   TextInput,
+  StatusBar,
   StyleSheet,
   SafeAreaView,
   TouchableOpacity,
 } from 'react-native';
-import auth from '@react-native-firebase/auth';
 
-const PhoneNoLogin = ({navigation}) => {
-  const [number, setNumber] = useState(null);
+const VerifyCode = ({route}) => {
+  const [code, setCode] = useState('');
 
-  const handleNoLogin = async () => {
-    const confirmation = await auth().signInWithPhoneNumber(number);
-    console.log('Phone Number Response');
-    console.log(confirmation);
-
-    if (confirmation === null) {
-      // If null, no SMS has been sent
-      console.log(confirmation);
-    } else {
-      navigation.navigate('VerifyCode', {confirm: confirmation});
+  const handleVerification = async () => {
+    const {confirm} = route.params;
+    try {
+      const res = await confirm.confirm(code);
+      console.log('Code Verification Response');
+      console.log(res);
+    } catch (error) {
+      console.log('Invalid code.');
     }
   };
 
@@ -30,30 +27,30 @@ const PhoneNoLogin = ({navigation}) => {
     <>
       <StatusBar barStyle="dark-content" />
       <SafeAreaView style={styles.mainContainer}>
-        <Text style={styles.titleTextStyle}>Phone Number</Text>
+        <Text style={styles.titleTextStyle}>Verification Code</Text>
         <View style={styles.inputViewContainer}>
           <TextInput
-            placeholder={'Enter Phone Number'}
+            placeholder={'Enter Code'}
             inputType="default"
             capitalize={'none'}
             onChangeText={(text) => {
-              setNumber(text);
+              setCode(text);
             }}
             style={{padding: 10}}
           />
         </View>
         <TouchableOpacity
           activeOpacity={0.7}
-          onPress={() => handleNoLogin()}
+          onPress={() => handleVerification()}
           style={styles.buttonContainer}>
-          <Text style={styles.buttonTextStyles}>Login</Text>
+          <Text style={styles.buttonTextStyles}>Verify Code</Text>
         </TouchableOpacity>
       </SafeAreaView>
     </>
   );
 };
 
-export default PhoneNoLogin;
+export default VerifyCode;
 
 const styles = StyleSheet.create({
   mainContainer: {

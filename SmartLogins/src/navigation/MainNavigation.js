@@ -10,6 +10,7 @@ import EmailPassLogin from '../screens/Logins/EmailPassLogin';
 import GoogleLogin from '../screens/Logins/GoogleLogin';
 import FacebookLogin from '../screens/Logins/FacebookLogin';
 import PhoneNoLogin from '../screens/Logins/PhoneNoLogin';
+import VerifyCode from '../screens/Logins/VerifyCode';
 import AppleLogin from '../screens/Logins/AppleLogin';
 
 const Stack = createStackNavigator();
@@ -43,6 +44,11 @@ function MainNavigation() {
         <Stack.Screen
           name="PhoneNoLogin"
           component={PhoneNoLogin}
+          options={{headerShown: false}}
+        />
+        <Stack.Screen
+          name="VerifyCode"
+          component={VerifyCode}
           options={{headerShown: false}}
         />
         <Stack.Screen
