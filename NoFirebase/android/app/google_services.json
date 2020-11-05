@@ -1,0 +1,11 @@
+{
+    "web":
+    {
+        "client_id":"725460327047-7lnlc5lqlu7t3im635r14h6hhtgqgq2v.apps.googleusercontent.com",
+        "project_id":"sinuous-sled-294712",
+        "auth_uri":"https://accounts.google.com/o/oauth2/auth",
+        "token_uri":"https://oauth2.googleapis.com/token",
+        "auth_provider_x509_cert_url":"https://www.googleapis.com/oauth2/v1/certs",
+        "client_secret":"7ScW_zV2xfyN_xHfL8T52dZ3"
+    }
+}
