@@ -15,7 +15,7 @@ import {
 
 const FBLogin = () => {
   const handleFBLogin = async () => {
-    // Attempt login with permissions
+    // Attempt login with permissions 
     const result = await LoginManager.logInWithPermissions([
       'public_profile',
       'email',
