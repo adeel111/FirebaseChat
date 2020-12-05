@@ -1,12 +1,12 @@
+import 'react-native-gesture-handler';
 import React, {useEffect} from 'react';
-import {SafeAreaView, Text, StatusBar} from 'react-native';
 import TrackPlayer from 'react-native-track-player';
+import MainNav from './src/navigations/MainNav';
 
 const App = () => {
   useEffect(() => {
     (async () => {
       await TrackPlayer.setupPlayer().then(() => {
-        // alert('Setup Successfully');
         console.log('Setup Successfully');
       });
     })();
@@ -14,10 +14,7 @@ const App = () => {
 
   return (
     <>
-      <StatusBar barStyle="dark-content" />
-      <SafeAreaView>
-        <Text>Hello Audio Player</Text>
-      </SafeAreaView>
+      <MainNav />
     </>
   );
 };
